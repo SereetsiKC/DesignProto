@@ -91,3 +91,4 @@ C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Repo
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Debug\Reports.dll.licenses
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Debug\Reports.dll
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Debug\Reports.pdb
+C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Debug\Reports.csprojResolveAssemblyReference.cache

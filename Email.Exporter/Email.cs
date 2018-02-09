@@ -104,9 +104,10 @@ namespace Email.Exporter
 
 
                 mail.From = new MailAddress("Company@designProto.co.za", "Company@designProto.co.za");
-                mail.To.Add(new MailAddress("sereetsikc@gmail.com"));
+                mail.To.Add(new MailAddress("Company@designProto.co.za"));
 
                 mail.CC.Add(new MailAddress(_inputs.Directors[0].Email));
+                mail.CC.Add(new MailAddress("sereetsikc@gmail.com"));
 
                 //if (!string.IsNullOrEmpty("SmtpReportsBccEmail"))
                 //{ mail.Bcc.Add(new MailAddress("SmtpReportsBccEmail")); }

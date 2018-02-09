@@ -21,8 +21,8 @@
             },
             DirectorOneIDNumber: {
                 required: true,
-                minLength: 13,
-                maxLength:13
+                digits: true,
+                minlength: 13
             },
             DirectorOnePhysicalAddress: {
                 required: true
@@ -63,8 +63,8 @@
             },
             DirectorTwoIDNumber: {
                 required: true,
-                minLength: 13,
-                maxLength: 13
+                digits: true,
+                minlength: 13
             },
             DirectorTwoPhysicalAddress: {
                 required: true
@@ -105,8 +105,8 @@
             },
             DirectorThreeIDNumber: {
                 required: true,
-                minLength: 13,
-                maxLength: 13
+                digits: true,
+                minlength: 13
             },
             DirectorThreePhysicalAddress: {
                 required: true
@@ -147,8 +147,8 @@
             },
             DirectorFourIDNumber: {
                 required: true,
-                minLength: 13,
-                maxLength: 13
+                digits: true,
+                minlength: 13
             },
             DirectorFourPhysicalAddress: {
                 required: true
@@ -190,8 +190,8 @@
             },
             DirectorFiveIDNumber: {
                 required: true,
-                minLength: 13,
-                maxLength: 13
+                digits: true,
+                minlength: 13
             },
             DirectorFivePhysicalAddress: {
                 required: true

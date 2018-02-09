@@ -86,9 +86,9 @@ C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Repo
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\bin\Release\es\DevExpress.Xpo.v17.1.resources.dll
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\bin\Release\ja\DevExpress.Xpo.v17.1.resources.dll
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\bin\Release\ru\DevExpress.Xpo.v17.1.resources.dll
-C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Release\Reports.csprojResolveAssemblyReference.cache
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Release\Reports.CompanyReport.resources
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Release\Reports.csproj.GenerateResource.Cache
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Release\Reports.dll.licenses
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Release\Reports.dll
 C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Release\Reports.pdb
+C:\Users\kopanosereetsi\Documents\Visual Studio 2017\Projects\Khodani.WebUi\Reports\obj\Release\Reports.csprojResolveAssemblyReference.cache
