@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26228.9
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Khodani.WebUi", "Khodani.WebUi\Khodani.WebUi.csproj", "{98153F4C-D2E7-420E-BA69-A023EC176A76}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Reports", "Reports\Reports.csproj", "{631601F3-C81A-4802-ADF7-CAD491B06CDC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Email.Exporter", "Email.Exporter\Email.Exporter.csproj", "{AA3B776D-40EB-40F1-85F2-FF0937037F22}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{98153F4C-D2E7-420E-BA69-A023EC176A76}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98153F4C-D2E7-420E-BA69-A023EC176A76}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98153F4C-D2E7-420E-BA69-A023EC176A76}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98153F4C-D2E7-420E-BA69-A023EC176A76}.Release|Any CPU.Build.0 = Release|Any CPU
+		{631601F3-C81A-4802-ADF7-CAD491B06CDC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{631601F3-C81A-4802-ADF7-CAD491B06CDC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{631601F3-C81A-4802-ADF7-CAD491B06CDC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{631601F3-C81A-4802-ADF7-CAD491B06CDC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AA3B776D-40EB-40F1-85F2-FF0937037F22}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AA3B776D-40EB-40F1-85F2-FF0937037F22}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AA3B776D-40EB-40F1-85F2-FF0937037F22}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AA3B776D-40EB-40F1-85F2-FF0937037F22}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
