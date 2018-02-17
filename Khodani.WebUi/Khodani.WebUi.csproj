@@ -71,6 +71,7 @@
     <Content Include="components\user-inputs\user-inputs.min.css">
       <DependentUpon>user-inputs.css</DependentUpon>
     </Content>
+    <Content Include="images\DYALX.gif" />
     <Content Include="packages.config" />
     <None Include="compilerconfig.json" />
     <None Include="compilerconfig.json.defaults">
@@ -138,6 +139,9 @@
       <Project>{aa3b776d-40eb-40f1-85f2-ff0937037f22}</Project>
       <Name>Email.Exporter</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="FileToSend\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

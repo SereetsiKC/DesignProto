@@ -1,7 +1,5 @@
-﻿function formValidation() {
-    "use strict";
+﻿var formValidation = () => {
 
-    
     $('#DirectorOne').validate({
         rules: {
             DirectorOneName: {
@@ -170,7 +168,6 @@
         }
     });
 
-
     $('#DirectorFive').validate({
         rules: {
             DirectorFiveName: {
@@ -215,7 +212,16 @@
 
     $('#CompnayDetails').validate({
         rules: {
-            CompanyName: {
+            CompanyNameOne: {
+                required: true
+            },
+            CompanyNameTwo: {
+                required: true
+            },
+            CompanyNameThree: {
+                required: true
+            },
+            CompanyNameFour: {
                 required: true
             },
             CompanyEmail: {

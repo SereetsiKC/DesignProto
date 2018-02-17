@@ -1,6 +1,6 @@
 ﻿
 
-var userinputs = function (ID) {
+var userinputs = (ID) => {
 
     require(['text!' + ComponentsPath + 'user-inputs/user-inputs.html']);
     require(['css!' + ComponentsPath + 'user-inputs/user-inputs.css']);
@@ -11,7 +11,7 @@ var userinputs = function (ID) {
     { DrectorNo: 0, Name: "", Surname: "", Cell: "", Email: "", IDNumber: "", PhysicalAddress: "", PostalAddress: "" },
     { DrectorNo: 0, Name: "", Surname: "", Cell: "", Email: "", IDNumber: "", PhysicalAddress: "", PostalAddress: "" }
     ];
-    proto.CompanyDetails = [{ Name: "", EmailAddress: "", URL: "", PhysicalAddress: "", PostalAddress: "" }];
+    proto.CompanyDetails = [{ Name1: "", Name2: "", Name3: "", Name4: "", EmailAddress: "", URL: "", PhysicalAddress: "", PostalAddress: "" }];
     proto.ProductsSelected = [{ CompanyRegistration: true, Taxclearancecertificate: false, logo: false, Letterhead: false, Businesscard: false, Businessprofile: false, website: false }];
     proto.Products = [{ Name: 'CompanyRegistration', Price: 800.00 },
     { Name: 'Taxclearancecertificate', Price: 600.00 },
@@ -22,7 +22,7 @@ var userinputs = function (ID) {
     { Name: 'website', Price: 4500.00 }]
     var data = new FormData();
 
-    function ViewModel() {
+    var ViewModel = function () {
         gproducts.data[ID].object = this;
         this.userinputs = ko.observable();
         //binding visibility of forms 
@@ -45,7 +45,7 @@ var userinputs = function (ID) {
         this.DirectorOnePhysicalAddress = ko.observable();
         this.DirectorOnePostalAddress = ko.observable();
         this.DirectorOneID = ko.observable();
-        this.fileuploadOneID = function () {
+        this.fileuploadOneID = () => {
             var object = gproducts.data[ID].object;
             var files = $("#fileuploadOneID").get(0).files;
             data.append("file1", files[0]);
@@ -63,7 +63,7 @@ var userinputs = function (ID) {
         this.DirectorTwoPhysicalAddress = ko.observable();
         this.DirectorTwoPostalAddress = ko.observable();
         this.DirectorTwoID = ko.observable();
-        this.fileuploadTwoID = function () {
+        this.fileuploadTwoID = () => {
             var object = gproducts.data[ID].object;
             var files = $("#fileuploadOneID").get(0).files;
             data.append("file2", files[0]);
@@ -81,7 +81,7 @@ var userinputs = function (ID) {
         this.DirectorThreePhysicalAddress = ko.observable();
         this.DirectorThreePostalAddress = ko.observable();
         this.DirectorThreeID = ko.observable();
-        this.fileuploadThreeID = function () {
+        this.fileuploadThreeID = () => {
             var object = gproducts.data[ID].object;
             var files = $("#fileuploadOneID").get(0).files;
             data.append("file3", files[0]);
@@ -99,7 +99,7 @@ var userinputs = function (ID) {
         this.DirectorFourPhysicalAddress = ko.observable();
         this.DirectorFourPostalAddress = ko.observable();
         this.DirectorFourID = ko.observable();
-        this.fileuploadFourID = function () {
+        this.fileuploadFourID = () => {
             var object = gproducts.data[ID].object;
             var files = $("#fileuploadOneID").get(0).files;
             data.append("file4", files[0]);
@@ -117,7 +117,7 @@ var userinputs = function (ID) {
         this.DirectorFivePhysicalAddress = ko.observable();
         this.DirectorFivePostalAddress = ko.observable();
         this.DirectorFiveID = ko.observable();
-        this.fileuploadFiveID = function () {
+        this.fileuploadFiveID = () => {
             var object = gproducts.data[ID].object;
             var files = $("#fileuploadOneID").get(0).files;
             data.append("file5", files[0]);
@@ -125,11 +125,13 @@ var userinputs = function (ID) {
             object.DirectorFiveID(data);
         }
         //5th director data
-
         //company details
-        this.CompanyName = ko.observable();
+        this.CompanyNameOne = ko.observable();
+        this.CompanyNameTwo = ko.observable();
+        this.CompanyNameThree = ko.observable();
+        this.CompanyNameFour = ko.observable();
         this.CompanyEmail = ko.observable();
-        this.URL = ko.observable();
+        this.URL = ko.observable('http://');
         this.CompanyPhysicalAddress = ko.observable();
         this.CompanyPostalAddress = ko.observable();
         //company details
@@ -140,28 +142,28 @@ var userinputs = function (ID) {
         //bind Finals before check out
 
         //binding click events 
-        this.BackDirector = function () {
+        this.BackDirector = () => {
             var object = gproducts.data[ID].object;
-                if (Directors[4].DrectorNo === 5) {
-                    object.showCompnayDetails(true);
-                    object.showDirectorFive(false);
-                } else if (Directors[3].DrectorNo === 4) {
-                    object.showCompnayDetails(true);
-                    object.showDirectorFour(false);
-                } else if (Directors[2].DrectorNo === 3) {
-                    object.showCompnayDetails(true);
-                    object.showDirectorThree(false);
-                } else if (Directors[1].DrectorNo === 2) {
-                    object.showCompnayDetails(true);
-                    object.showDirectorTwo(false);
-                } else if (Directors[0].DrectorNo === 1) {
-                    object.showCompnayDetails(true);
-                    object.showDirectorOne(false);
-                }
+            if (Directors[4].DrectorNo === 5) {
+                object.showCompnayDetails(true);
+                object.showDirectorFive(false);
+            } else if (Directors[3].DrectorNo === 4) {
+                object.showCompnayDetails(true);
+                object.showDirectorFour(false);
+            } else if (Directors[2].DrectorNo === 3) {
+                object.showCompnayDetails(true);
+                object.showDirectorThree(false);
+            } else if (Directors[1].DrectorNo === 2) {
+                object.showCompnayDetails(true);
+                object.showDirectorTwo(false);
+            } else if (Directors[0].DrectorNo === 1) {
+                object.showCompnayDetails(true);
+                object.showDirectorOne(false);
+            }
         }
-        this.Continue = function () {
+        this.Continue = () => {
             var object = gproducts.data[ID].object;
-             formValidation(); 
+            formValidation();
             if (!object.showDirectorOne()) {
 
                 var form = $('#DirectorOne');
@@ -182,7 +184,7 @@ var userinputs = function (ID) {
                 }
             }
             else if (!object.showDirectorTwo()) {
-                var form = $('#Directortwo');
+                var form = $('#DirectorTwo');
                 form.removeAttr('novalidate');
                 $.validator.unobtrusive.parse(form);
 
@@ -261,7 +263,10 @@ var userinputs = function (ID) {
                 $.validator.unobtrusive.parse(form);
 
                 if (form.valid()) {
-                    CompanyDetails[0].Name = object.CompanyName();
+                    CompanyDetails[0].Name1 = object.CompanyNameOne();
+                    CompanyDetails[0].Name2 = object.CompanyNameTwo();
+                    CompanyDetails[0].Name3 = object.CompanyNameThree();
+                    CompanyDetails[0].Name4 = object.CompanyNameFour();
                     CompanyDetails[0].EmailAddress = object.CompanyEmail();
                     CompanyDetails[0].URL = object.URL();
                     CompanyDetails[0].PhysicalAddress = object.CompanyPhysicalAddress();
@@ -280,19 +285,19 @@ var userinputs = function (ID) {
             }
 
         }
-        this.BackCompanyDetails = function () {
+        this.BackCompanyDetails = () => {
             var object = gproducts.data[ID].object;
             object.showProductSelection(true);
             object.showCompnayDetails(false);
         }
-        this.CheckOut = function () {
-            
+        this.CheckOut = () => {
+
 
             $('#gComfirmation').modal({ "show": true, "backdrop": "static", "keyboard": false });
         }
-        this.AddAnotherDirector = function () {
+        this.AddAnotherDirector = () => {
 
-            formValidation(); 
+            formValidation();
             var object = gproducts.data[ID].object;
             if (!object.showDirectorOne()) {
                 var form = $('#DirectorOne');
@@ -304,6 +309,7 @@ var userinputs = function (ID) {
                     Directors[0].Name = object.DirectorOneName();
                     Directors[0].Surname = object.DirectorOneSurname();
                     Directors[0].Cell = object.DirectorOneCell();
+                    Directors[0].Email = object.DirectorOneEmail();
                     Directors[0].IDNumber = object.DirectorOneIDNumber();
                     Directors[0].PhysicalAddress = object.DirectorOnePhysicalAddress();
                     Directors[0].PostalAddress = object.DirectorOnePostalAddress();
@@ -321,6 +327,7 @@ var userinputs = function (ID) {
                     Directors[1].Name = object.DirectorTwoName();
                     Directors[1].Surname = object.DirectorTwoSurname();
                     Directors[1].Cell = object.DirectorTwoCell();
+                    Directors[1].Email = object.DirectorTwoEmail();
                     Directors[1].IDNumber = object.DirectorTwoIDNumber();
                     Directors[1].PhysicalAddress = object.DirectorTwoPhysicalAddress();
                     Directors[1].PostalAddress = object.DirectorTwoPostalAddress();
@@ -338,6 +345,7 @@ var userinputs = function (ID) {
                     Directors[2].Name = object.DirectorThreeName();
                     Directors[2].Surname = object.DirectorThreeSurname();
                     Directors[2].Cell = object.DirectorThreeCell();
+                    Directors[2].Email = object.DirectorThreeEmail();
                     Directors[2].IDNumber = object.DirectorThreeIDNumber();
                     Directors[2].PhysicalAddress = object.DirectorThreePhysicalAddress();
                     Directors[2].PostalAddress = object.DirectorThreePostalAddress();
@@ -355,17 +363,18 @@ var userinputs = function (ID) {
                     Directors[3].Name = object.DirectorFourName();
                     Directors[3].Surname = object.DirectorFourSurname();
                     Directors[3].Cell = object.DirectorFourCell();
+                    Directors[3].Email = object.DirectorFourEmail();
                     Directors[3].IDNumber = object.DirectorFourIDNumber();
                     Directors[3].PhysicalAddress = object.DirectorFourPhysicalAddress();
                     Directors[3].PostalAddress = object.DirectorFourPostalAddress();
-                    object.showCompnayDetails(false);
+                    object.showDirectorFive(false);
                     object.showDirectorFour(true);
                 }
             }
 
         }
 
-        this.OK = function () {
+        this.OK = () => {
 
             for (var i = 0; i < Directors.length; i++) {
                 if (Directors[i].DrectorNo === 0) {
@@ -387,11 +396,19 @@ var userinputs = function (ID) {
                 data: data,
                 contentType: false,
                 processData: false,
-                success: function (data) {
-                    window.location.reload(true);
+                success: (data) => {
+                    $('#gComfirmation').modal('hide');
+                    $('#gHappy').modal({ "show": true, "backdrop": "static", "keyboard": false });
+                 
                 }
             });
         };
+
+
+        this.Done = () => {
+            $('#gHappy').modal('hide')
+            window.location.reload(true);
+        }
         //binding click events 
 
         //checkboxes
@@ -405,12 +422,29 @@ var userinputs = function (ID) {
 
 
         //bind computed value
-        this.CompanyRegistrationTotal = ko.computed(function () {
+        this.CompanyRegistrationTotal = ko.computed(() => {
             return 800;
         });
 
+        this.information = ko.computed(() => {
+            if (!gproducts.data[ID].object.showCompnayDetails()) {
+                proto.home.header1('COMPANY DETAILS');
+                proto.home.msg1('Please make sure to capture all required information');
+            } else if (!gproducts.data[ID].object.showProductSelection()) {
+                proto.home.header1('INVOICE/QUOTE');
+                proto.home.msg1('You may build your package before checking out...');
+                proto.home.TIP('Please note that all work requested will only resume after a deposit has been made into our banking details as displayed.');
+            }
+            else {
+                proto.home.header1('DIRECTOR DETAILS');
+                proto.home.msg1('Please make sure to capture all required information');
+            }
 
-        this.GrandTotal = ko.computed(function () {
+
+        })
+
+
+        this.GrandTotal = ko.computed(() => {
             var object = gproducts.data[ID].object;
             var subTotal = 800;
 
@@ -462,18 +496,18 @@ var userinputs = function (ID) {
 
     }
 
-    var populateVariables = function (object) {
+    var populateVariables = (object) => {
 
-        formValidation(); 
+        formValidation();
     };
     var userinputsViewModel = new ViewModel();
-    var populateTemplate = function populateTemplate() {
+    var populateTemplate = () => {
         ko.cleanNode($('#user-inputs')[0]);
         ko.applyBindings(userinputsViewModel, $('#user-inputs')[0]);
     };
 
 
-    var init = function init() {
+    var init = () => {
         if (ko.components.isRegistered('user-inputs')) {
             ko.components.unregister('user-inputs');
             ko.cleanNode($('user-inputs')[0]);

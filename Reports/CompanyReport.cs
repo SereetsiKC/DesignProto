@@ -11,308 +11,234 @@ namespace Reports
 {
     public partial class CompanyReport : DevExpress.XtraReports.UI.XtraReport
     {
-        public CompanyReport(string strXML)
+        public CompanyReport(ApplicantData _inputs)
         {
-
-            strXML = XmlFormatNodesDate(strXML, "Date");
-            System.IO.StringReader Objsr = new System.IO.StringReader(strXML);
-            DataSet dsXML = new DataSet();
-            dsXML.ReadXml(Objsr);
             InitializeComponent();
+
+            #region Hide All Directors
+            DirectorOne.Visible = false;
+            DirectorTwo.Visible = false;
+            DirectorThree.Visible = false;
+            DirectorFour.Visible = false;
+            DirectorFive.Visible = false;
+            #endregion Hide All Directors
+
+            #region Directors
+            foreach (var _dr in _inputs.Directors)
+            {
+                switch (_dr.DrectorNo)
+                {
+                    case 1:
+                        {
+                            DirectorOne.Visible = true;
+                            DirectorOneName.Text = _dr.Name;
+                            DirectorOneSurname.Text = _dr.Surname;
+                            DirectorOneIDNumber.Text = _dr.IDNumber;
+                            DirectorOneEmailAddres.Text = _dr.Email;
+                            DirectorOneCellNo.Text = _dr.Cell;
+                            DirectorOnePhysicalAddress.Text = _dr.PhysicalAddress;
+                            DirectorOnePostalAddress.Text = _dr.PostalAddress;
+                            break;
+                        }
+                    case 2:
+                        {
+                            DirectorTwo.Visible = true;
+                            DirectorTwoName.Text = _dr.Name;
+                            DirectorTwoSurname.Text = _dr.Surname;
+                            DirectorTwoIDNumber.Text = _dr.IDNumber;
+                            DirectorTwoEmailAddres.Text = _dr.Email;
+                            DirectorTwoCellNo.Text = _dr.Cell;
+                            DirectorTwoPhysicalAddress.Text = _dr.PhysicalAddress;
+                            DirectorTwoPostalAddress.Text = _dr.PostalAddress;
+                            break;
+                        }
+                    case 3:
+                        {
+                            DirectorThree.Visible = true;
+                            DirectorThreeName.Text = _dr.Name;
+                            DirectorThreeSurname.Text = _dr.Surname;
+                            DirectorThreeIDNumber.Text = _dr.IDNumber;
+                            DirectorThreeEmailAddres.Text = _dr.Email;
+                            DirectorThreeCellNo.Text = _dr.Cell;
+                            DirectorThreePhysicalAddress.Text = _dr.PhysicalAddress;
+                            DirectorThreePostalAddress.Text = _dr.PostalAddress;
+                            break;
+                        }
+                    case 4:
+                        {
+                            DirectorFour.Visible = true;
+                            DirectorFourName.Text = _dr.Name;
+                            DirectorFourSurname.Text = _dr.Surname;
+                            DirectorFourIDNumber.Text = _dr.IDNumber;
+                            DirectorFourEmailAddres.Text = _dr.Email;
+                            DirectorFourCellNo.Text = _dr.Cell;
+                            DirectorFourPhysicalAddress.Text = _dr.PhysicalAddress;
+                            DirectorFourPostalAddress.Text = _dr.PostalAddress;
+                            break;
+                        }
+                    case 5:
+                        {
+                            DirectorFive.Visible = true;
+                            DirectorFiveName.Text = _dr.Name;
+                            DirectorFiveSurname.Text = _dr.Surname;
+                            DirectorFiveIDNumber.Text = _dr.IDNumber;
+                            DirectorFiveEmailAddres.Text = _dr.Email;
+                            DirectorFiveCellNo.Text = _dr.Cell;
+                            DirectorFivePhysicalAddress.Text = _dr.PhysicalAddress;
+                            DirectorFivePostalAddress.Text = _dr.PostalAddress;
+                            break;
+                        }
+                }
+            }
+            #endregion Directors
+
+            #region CompanyDetails
+            foreach(var _company in _inputs.CompanyDetails)
+            {
+                NameOne.Text = _company.Name1;
+                NameTwo.Text = _company.Name2;
+                NameThree.Text = _company.Name3;
+                NameFour.Text = _company.Name4;
+                EmailAddress.Text = _company.EmailAddress;
+                URL.Text = _company.URL;
+                PhysicalAddress.Text = _company.PhysicalAddress;
+                PostalAddress.Text = _company.PostalAddress;
+            }
+            #endregion CompanyDetails
+
+            #region Products Selected
             decimal total = 0;
-            if (dsXML.Tables.Contains("Product"))
+            foreach (var _product in _inputs.ProductsSelected)
             {
-                DataTable dt = dsXML.Tables["Product"];
-                DataTable dt2 = dsXML.Tables["Productsselected"];
-
-                foreach (DataRow dr in dt2.Rows)
+                if (_product.CompanyRegistration)
                 {
-                    if (Convert.ToBoolean(dr["CompanyRegistration"].ToString()))
+                    CompanyRegistrationYes.Visible = true;
+                    CompanyRegistrationNo.Visible = false;
+                    foreach(var _price in _inputs.Products)
                     {
-                        CompanyRegistrationYes.Visible = true;
-                        CompanyRegistrationNo.Visible = false;
-                        foreach (DataRow dr1 in dt.Rows)
+                        if(_price.Name == "CompanyRegistration")
                         {
-                            if (dr1["Name"].ToString() == "CompanyRegistration")
-                            {
-                                total = total + Convert.ToDecimal(dr1["Price"].ToString());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        CompanyRegistrationYes.Visible = false;
-                        CompanyRegistrationNo.Visible = true;
-                    }
-
-                    if (Convert.ToBoolean(dr["Taxclearancecertificate"].ToString()))
-                    {
-                        TaxclearancecertificateYes.Visible = true;
-                        TaxclearancecertificateNo.Visible = false;
-                        foreach (DataRow dr1 in dt.Rows)
-                        {
-                            if (dr1["Name"].ToString() == "Taxclearancecertificate")
-                            {
-                                total = total + Convert.ToDecimal(dr1["Price"].ToString());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        TaxclearancecertificateYes.Visible = false;
-                        TaxclearancecertificateNo.Visible = true;
-                    }
-
-                    if (Convert.ToBoolean(dr["logo"].ToString()))
-                    {
-                        logoYes.Visible = true;
-                        logoNo.Visible = false;
-                        foreach (DataRow dr1 in dt.Rows)
-                        {
-                            if (dr1["Name"].ToString() == "logo")
-                            {
-                                total = total + Convert.ToDecimal(dr1["Price"].ToString());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        logoYes.Visible = false;
-                        logoNo.Visible = true;
-                    }
-
-
-                    if (Convert.ToBoolean(dr["Letterhead"].ToString()))
-                    {
-                        LetterheadYes.Visible = true;
-                        LetterheadNo.Visible = false;
-                        foreach (DataRow dr1 in dt.Rows)
-                        {
-                            if (dr1["Name"].ToString() == "Letterhead")
-                            {
-                                total = total + Convert.ToDecimal(dr1["Price"].ToString());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        LetterheadYes.Visible = false;
-                        LetterheadNo.Visible = true;
-                    }
-
-                    if (Convert.ToBoolean(dr["Businesscard"].ToString()))
-                    {
-                        BusinesscardYes.Visible = true;
-                        BusinesscardNo.Visible = false;
-                        foreach (DataRow dr1 in dt.Rows)
-                        {
-                            if (dr1["Name"].ToString() == "Businesscard")
-                            {
-                                total = total + Convert.ToDecimal(dr1["Price"].ToString());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        BusinesscardYes.Visible = false;
-                        BusinesscardNo.Visible = true;
-                    }
-
-                    if (Convert.ToBoolean(dr["Businessprofile"].ToString()))
-                    {
-                        BusinessprofileYes.Visible = true;
-                        BusinessprofileNo.Visible = false;
-                        foreach (DataRow dr1 in dt.Rows)
-                        {
-                            if (dr1["Name"].ToString() == "Businessprofile")
-                            {
-                                total = total + Convert.ToDecimal(dr1["Price"].ToString());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        BusinessprofileYes.Visible = false;
-                        BusinessprofileNo.Visible = true;
-                    }
-
-                    if (Convert.ToBoolean(dr["website"].ToString()))
-                    {
-                        websiteYes.Visible = true;
-                        websiteNo.Visible = false;
-                        foreach (DataRow dr1 in dt.Rows)
-                        {
-                            if (dr1["Name"].ToString() == "website")
-                            {
-                                total = total + Convert.ToDecimal(dr1["Price"].ToString());
-                            }
-                        }
-                    }
-                    else
-                    {
-                        websiteYes.Visible = false;
-                        websiteNo.Visible = true;
-                    }
-                }
-            }
-
-            GrandTotal.Text = total.ToString("N2");
-
-            this.DataSource = dsXML;
-            dsXML.Dispose();
-        }
-        private string XmlFormatNodesCurrencyNoCent(string strXML, string nodetofind)//, string formaat)
-        {
-            XmlDocument xml = new XmlDocument();
-            xml.LoadXml(strXML);  // suppose that str string contains "<Names>...</Names>"
-
-            XmlNodeList xnList = xml.SelectNodes("//*[contains(name(),'" + nodetofind + "')]");
-            foreach (XmlNode xn in xnList)
-            {
-                try
-                {
-                    if (!String.IsNullOrEmpty(xn.FirstChild.Value))
-                    {
-                        String Source = xn.FirstChild.Value;
-                        int Lengte = Source.LastIndexOf(".");
-                        String pretemp = Source.Substring(0, Lengte);
-                        int lengte2 = pretemp.Length;
-                        Int32 temp = Convert.ToInt32(pretemp);
-
-                        switch (lengte2)
-                        {
-                            case 1:
-                                xn.FirstChild.Value = String.Format("{0,0:R 0}", temp);
-                                break;
-
-                            case 2:
-                                xn.FirstChild.Value = String.Format("{0,0:R 00}", temp);
-                                break;
-
-                            case 3:
-                                xn.FirstChild.Value = String.Format("{0,0:R 000}", temp);
-                                break;
-
-                            case 4:
-                                xn.FirstChild.Value = String.Format("{0,0:R 0 000}", temp);
-                                break;
-
-                            case 5:
-                                xn.FirstChild.Value = String.Format("{0,0:R 00 000}", temp);
-                                break;
-
-                            case 6:
-                                xn.FirstChild.Value = String.Format("{0,0:R 000 000}", temp);
-                                break;
-
-                            case 7:
-                                xn.FirstChild.Value = String.Format("{0,0:R 0 000 000}", temp);
-                                break;
-
-                            case 8:
-                                xn.FirstChild.Value = String.Format("{0,0:R 00 000 000}", temp);
-                                break;
-
-                            case 9:
-                                xn.FirstChild.Value = String.Format("{0,0:R 000 000 000}", temp);
-                                break;
-                        }
-
-                    }
-                }
-                catch (Exception ex) { }
-            }
-
-
-            StringWriter sw = new StringWriter();
-            XmlTextWriter tx = new XmlTextWriter(sw);
-            xml.WriteTo(tx);
-
-            strXML = sw.ToString();
-            return strXML;
-        }
-
-        private string XmlFormatNodesDate(string strXML, string nodetofind)
-        {
-            XmlDocument xml = new XmlDocument();
-            xml.LoadXml(strXML);  // suppose that str string contains "<Names>...</Names>"
-
-            XmlNodeList xnList = xml.SelectNodes("//*[contains(name(),'" + nodetofind + "')]");
-            foreach (XmlNode xn in xnList)
-            {
-                try
-                {
-                    if (!String.IsNullOrEmpty(xn.FirstChild.Value))
-                    {
-                        if (!(xn.Name == "EnquiryDate") && !(xn.ParentNode.Name == "SubscriberInputDetails"))
-                        {
-                            xn.FirstChild.Value = xn.FirstChild.Value.Replace("-", "/");
-                        }
-                        else
-                        {
-                            string Source;
-                            string Datum;
-                            string Tyd;
-                            int Begin;
-                            int Lengte;
-                            Source = xn.FirstChild.Value.Replace("-", "/");
-                            Datum = Source.Substring(0, 10);
-                            Begin = Source.LastIndexOf("T") + 1;
-                            Lengte = Source.LastIndexOf(".") - Begin;
-                            Tyd = Source.Substring(Begin, Lengte);
-
-                            xn.FirstChild.Value = Datum + " " + Tyd;
-                        }
-                    }
-                    else
-                    {
-
-                        xn.FirstChild.Value = xn.FirstChild.Value.Replace("-", "/");
-                    }
-                }
-                catch (Exception ex) { }
-            }
-
-            StringWriter sw = new StringWriter();
-            XmlTextWriter tx = new XmlTextWriter(sw);
-            xml.WriteTo(tx);
-            strXML = sw.ToString();
-            return strXML;
-        }
-
-        private string XmlFormatNodesInt(string strXML, string nodetofind)
-        {
-            XmlDocument xml = new XmlDocument();
-            xml.LoadXml(strXML);  // suppose that str string contains "<Names>...</Names>"
-
-            XmlNodeList xnList = xml.SelectNodes("//*[contains(name(),'" + nodetofind + "')]");
-            foreach (XmlNode xn in xnList)
-            {
-                try
-                {
-                    if (!String.IsNullOrEmpty(xn.FirstChild.Value))
-                    {
-                        int Lengte = xn.FirstChild.Value.LastIndexOf(".");
-
-                        if (!(Convert.ToString(Lengte) == "0"))
-                        {
-                            xn.FirstChild.Value = xn.FirstChild.Value.Substring(0, Lengte);
-                        }
-                        else
-                        {
-                            xn.FirstChild.Value = xn.FirstChild.Value;
+                            total = total + _price.Price;
                         }
                     }
                 }
-                catch (Exception ex) { }
+                else
+                {
+                    CompanyRegistrationYes.Visible = false;
+                    CompanyRegistrationNo.Visible = true;
+                }
+
+                if (_product.Taxclearancecertificate)
+                {
+                    TaxclearancecertificateYes.Visible = true;
+                    TaxclearancecertificateNo.Visible = false;
+                    foreach (var _price in _inputs.Products)
+                    {
+                        if (_price.Name == "Taxclearancecertificate")
+                        {
+                            total = total + _price.Price;
+                        }
+                    }
+                }
+                else
+                {
+                    TaxclearancecertificateYes.Visible = false;
+                    TaxclearancecertificateNo.Visible = true;
+                }
+
+                if (_product.website)
+                {
+                    websiteYes.Visible = true;
+                    websiteNo.Visible = false;
+                    foreach (var _price in _inputs.Products)
+                    {
+                        if (_price.Name == "website")
+                        {
+                            total = total + _price.Price;
+                        }
+                    }
+                }
+                else
+                {
+                    websiteYes.Visible = false;
+                    websiteNo.Visible = true;
+                }
+
+                if (_product.logo)
+                {
+                    logoYes.Visible = true;
+                    logoNo.Visible = false;
+                    foreach (var _price in _inputs.Products)
+                    {
+                        if (_price.Name == "logo")
+                        {
+                            total = total + _price.Price;
+                        }
+                    }
+                }
+                else
+                {
+                    logoYes.Visible = false;
+                    logoNo.Visible = true;
+                }
+
+                if (_product.Letterhead)
+                {
+                    LetterheadYes.Visible = true;
+                    LetterheadNo.Visible = false;
+                    foreach (var _price in _inputs.Products)
+                    {
+                        if (_price.Name == "Letterhead")
+                        {
+                            total = total + _price.Price;
+                        }
+                    }
+                }
+                else
+                {
+                    LetterheadYes.Visible = false;
+                    LetterheadNo.Visible = true;
+                }
+
+                if (_product.Businesscard)
+                {
+                    BusinesscardYes.Visible = true;
+                    BusinesscardNo.Visible = false;
+                    foreach (var _price in _inputs.Products)
+                    {
+                        if (_price.Name == "Businesscard")
+                        {
+                            total = total + _price.Price;
+                        }
+                    }
+                }
+                else
+                {
+                    BusinesscardYes.Visible = false;
+                    BusinesscardNo.Visible = true;
+                }
+
+                if (_product.Businessprofile)
+                {
+                    BusinessprofileYes.Visible = true;
+                    BusinessprofileNo.Visible = false;
+                    foreach (var _price in _inputs.Products)
+                    {
+                        if (_price.Name == "Businessprofile")
+                        {
+                            total = total + _price.Price;
+                        }
+                    }
+                }
+                else
+                {
+                    BusinessprofileYes.Visible = false;
+                    BusinessprofileNo.Visible = true;
+                }
             }
-            StringWriter sw = new StringWriter();
-            XmlTextWriter tx = new XmlTextWriter(sw);
-            xml.WriteTo(tx);
 
-            strXML = sw.ToString();
-            return strXML;
+            GrandTotal.Text = "R"+total.ToString("N2");
+            #endregion Products Selected         
         }
-
     }
 }

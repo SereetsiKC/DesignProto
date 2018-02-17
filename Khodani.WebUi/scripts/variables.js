@@ -25,3 +25,24 @@ String.prototype.ToMoney = function () {
 
     return results;
 };
+
+
+$(document).ajaxStart(() => {
+    try {
+
+        $("#gloading").modal({
+            "show": true,
+            "backdrop": "static",
+            "keyboard": false
+        });
+        //alert('Hello !!');
+
+    }
+    catch (ex) {
+        alert(ex.message);
+    }
+});
+
+$(document).ajaxStop(() => {
+    $("#gloading").modal('hide');
+});
